@@ -1,10 +1,10 @@
 ﻿'use strict';
-
 (function () {
-
+    
     Office.onReady(function () {
         // Office is ready
         $(document).ready(function () {
+            insertEmersonQuoteAtSelection();
             // The document is ready
             // Use this to check whether the API is supported in the Word client.
             if (Office.context.requirements.isSetSupported('WordApi', '1.1')) {
