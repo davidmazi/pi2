@@ -1,0 +1,24 @@
+{
+  "name": "pi2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "microsoft-cognitiveservices-speech-sdk": "^1.7.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/davidmazi/pi2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/davidmazi/pi2/issues"
+  },
+  "homepage": "https://github.com/davidmazi/pi2#readme",
+  "description": ""
+}
