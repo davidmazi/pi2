@@ -4,15 +4,12 @@
     Office.onReady(function () {
         // Office is ready
         $(document).ready(function () {
-            insertEmersonQuoteAtSelection();
             // The document is ready
             // Use this to check whether the API is supported in the Word client.
             if (Office.context.requirements.isSetSupported('WordApi', '1.1')) {
                 // Do something that is only available via the new APIs
-                $('#emerson').click(insertEmersonQuoteAtSelection);
-                $('#checkhov').click(insertChekhovQuoteAtTheBeginning);
-                $('#proverb').click(insertChineseProverbAtTheEnd);
-                $('#supportedVersion').html('This code is using Word 2016 or later.');
+                $('#ajoutTextViaInputButton').click(ajoutTextViaInput);
+                $('#ajoutSqrtButton').click(ajoutSqrt);
             }
             else {
                 // Just letting you know that this code will not work with your version of Word.
@@ -21,24 +18,33 @@
         });
     });
 
-    function insertEmersonQuoteAtSelection() {
-        Word.run(function (context) {
+    function ajoutTextViaInput() {
+        Word.run(function () {
 
-            // Create a proxy object for the document.
-            var thisDocument = context.document;
-
-            // Queue a command to get the current selection.
-            // Create a proxy range object for the selection.
-            var range = thisDocument.getSelection();
-
-            // Queue a command to replace the selected text.
-            range.insertText('"Hitch your wagon to a star."\n', Word.InsertLocation.replace);
-
-            // Synchronize the document state by executing the queued commands,
-            // and return a promise to indicate task completion.
-            return context.sync().then(function () {
-                console.log('Added a quote from Ralph Waldo Emerson.');
+            var text = $('#message').val();
+            write(text);
+            $('#message').empty();
+            function write(message) {
+                Office.context.document.setSelectedDataAsync(message);
+            }
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+                }
             });
+    }
+
+    function ajoutSqrt() {
+        Word.run(function () {
+
+            var text = $('#message').val();
+            write(text);
+            $('#message').empty();
+            function write(message) {
+                Office.context.document.setSelectedDataAsync(message);
+            }
         })
             .catch(function (error) {
                 console.log('Error: ' + JSON.stringify(error));
