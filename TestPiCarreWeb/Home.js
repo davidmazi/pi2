@@ -23,7 +23,6 @@
 
             var text = $('#message').val();
             write(text);
-            $('#message').empty();
             function write(message) {
                 Office.context.document.setSelectedDataAsync(message);
             }
@@ -37,59 +36,28 @@
     }
 
     function ajoutSqrt() {
-        Word.run(function () {
-
-            var text = $('#message').val();
-            write(text);
-            $('#message').empty();
-            function write(message) {
-                Office.context.document.setSelectedDataAsync(message);
-            }
-        })
-            .catch(function (error) {
-                console.log('Error: ' + JSON.stringify(error));
-                if (error instanceof OfficeExtension.Error) {
-                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
-                }
-            });
-    }
-
-    function insertChekhovQuoteAtTheBeginning() {
         Word.run(function (context) {
 
-            // Create a proxy object for the document body.
-            var body = context.document.body;
+            var contentControls = context.document.contentControls;
+            contentControls.
+            // Queue a command to load the id property for all of the content controls. 
+            context.load(contentControls, 'id');
 
-            // Queue a command to insert text at the start of the document body.
-            body.insertText('"Knowledge is of no value unless you put it into practice."\n', Word.InsertLocation.start);
-
-            // Synchronize the document state by executing the queued commands,
+            // Synchronize the document state by executing the queued commands, 
             // and return a promise to indicate task completion.
             return context.sync().then(function () {
-                console.log('Added a quote from Anton Chekhov.');
-            });
-        })
-            .catch(function (error) {
-                console.log('Error: ' + JSON.stringify(error));
-                if (error instanceof OfficeExtension.Error) {
-                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
-                }
-            });
-    }
+                
+                    contentControls.items[0].insertHtml(
+                        '<strong>HTML content inserted into the content control.</strong>',
+                        'Start');
 
-    function insertChineseProverbAtTheEnd() {
-        Word.run(function (context) {
-
-            // Create a proxy object for the document body.
-            var body = context.document.body;
-
-            // Queue a command to insert text at the end of the document body.
-            body.insertText('"To know the road ahead, ask those coming back."\n', Word.InsertLocation.end);
-
-            // Synchronize the document state by executing the queued commands,
-            // and return a promise to indicate task completion.
-            return context.sync().then(function () {
-                console.log('Added a quote from a Chinese proverb.');
+                    // Synchronize the document state by executing the queued commands, 
+                    // and return a promise to indicate task completion.
+                    return context.sync()
+                        .then(function () {
+                            console.log('Inserted HTML in the first content control.');
+                        });
+                
             });
         })
             .catch(function (error) {
