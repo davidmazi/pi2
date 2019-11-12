@@ -30,21 +30,65 @@
     <!-- <link rel="stylesheet" href="https://appsforoffice.microsoft.com/fabric/2.1.0/fabric.components.min.css"> -->
 
 <body>
-    <div id="content-header">
+    <!--<div id="content-header">
         <div class="padding">
-            <h1>Welcome</h1>
+            <h1>Dictée d'équation</h1>
         </div>
-    </div>
+    </div>-->
     <div id="content-main">
         <div class="padding">
-            <p>Choose the buttons below to add boilerplate text to the document by using the Word JavaScript API.</p>
+            <p>Pour écrire un opérateur mathématique à la voix, dites les mots-clés suivants : </p>
             <br />
-            <h3>Try it out</h3>
-            <button id="emerson">Add quote from Ralph Waldo Emerson</button>
+            <h3>Déplacements</h3>
+            <div class="operator-block">
+                <input type="image" src="Images/back.png" id="plus" />
+                <br />Gauche
+            </div>
+            <div class="operator-block">
+                <input type="image" src="Images/next.png" id="plus" />
+                <br />Droite
+            </div>
+            <h3>Opérateurs</h3>
+            <div class="operator-block">
+                <input type="image" src="Images/plus.png" id="plus" />
+                <br />Plus
+            </div>
+            <div class="operator-block">
+                <input type="image" src="Images/moins.png" id="moins" />
+                <br />Moins
+            </div>
+            <div class="operator-block">
+                <input type="image" src="Images/fois.png" id="fois" />
+                <br />Fois
+            </div>
+            <div class="operator-block">
+                <input type="image" src="Images/egal.png" id="egale" />
+                <br />Égale
+            </div>
+            <div class="operator-block">
+                <input type="image" src="Images/different.png" id="different" />
+                <br />Différent
+            </div>
+            <h3>Chiffres</h3>
+            <div id="content-numbers">
+                <button id="button-number">1</button>
+                <button id="button-number">2</button>
+                <button id="button-number">3</button>
+                <button id="button-number">4</button>
+                <button id="button-number">5</button>
+                <button id="button-number">6</button>
+                <button id="button-number">7</button>
+                <button id="button-number">8</button>
+                <button id="button-number">9</button>
+                <button id="button-number">0</button>
+            </div>
+
+
+            <!--<button id="emerson">Add quote from Ralph Waldo Emerson</button>
             <br /><br />
             <button id="checkhov">Add quote from Anton Chekhov</button>
             <br /><br />
-            <button id="proverb">Add Chinese proverb</button>
+            <button id="proverb">Add Chinese proverb</button>-->
         </div>
     </div>
     <br />

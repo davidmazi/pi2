@@ -4,15 +4,20 @@
     Office.onReady(function () {
         // Office is ready
         $(document).ready(function () {
-            insertEmersonQuoteAtSelection();
+            //************** insertEmersonQuoteAtSelection();
             // The document is ready
             // Use this to check whether the API is supported in the Word client.
             if (Office.context.requirements.isSetSupported('WordApi', '1.1')) {
                 // Do something that is only available via the new APIs
-                $('#emerson').click(insertEmersonQuoteAtSelection);
-                $('#checkhov').click(insertChekhovQuoteAtTheBeginning);
-                $('#proverb').click(insertChineseProverbAtTheEnd);
-                $('#supportedVersion').html('This code is using Word 2016 or later.');
+                //************** $('#emerson').click(insertEmersonQuoteAtSelection);
+                //************** $('#checkhov').click(insertChekhovQuoteAtTheBeginning);
+                //************** $('#proverb').click(insertChineseProverbAtTheEnd);
+                //************** $('#supportedVersion').html('This code is using Word 2016 or later.');
+                $('#plus').click(insertPlusOperator);
+                $('#moins').click(insertMinusOperator);
+                $('#fois').click(insertTimeOperator);
+                $('#egale').click(insertEqualOperator);
+                $('#different').click(insertNotEqualOperator);
             }
             else {
                 // Just letting you know that this code will not work with your version of Word.
@@ -21,6 +26,147 @@
         });
     });
 
+    function insertPlusOperator() {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Queue a command to get the current selection.
+            // Create a proxy range object for the selection.
+            var range = thisDocument.getSelection();
+
+            // Queue a command to replace the selected text.
+            range.insertText('+ (écrire la fonction +)', Word.InsertLocation.replace);
+
+            // Synchronize the document state by executing the queued commands,
+            // and return a promise to indicate task completion.
+            return context.sync().then(function () {
+                console.log('Added plus operator.');
+            });
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+                }
+            });
+    }
+
+    function insertMinusOperator() {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Queue a command to get the current selection.
+            // Create a proxy range object for the selection.
+            var range = thisDocument.getSelection();
+
+            // Queue a command to replace the selected text.
+            range.insertText('- (écrire la fonction -)', Word.InsertLocation.replace);
+
+            // Synchronize the document state by executing the queued commands,
+            // and return a promise to indicate task completion.
+            return context.sync().then(function () {
+                console.log('Added minus operator.');
+            });
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+                }
+            });
+    }
+
+    function insertTimeOperator() {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Queue a command to get the current selection.
+            // Create a proxy range object for the selection.
+            var range = thisDocument.getSelection();
+
+            // Queue a command to replace the selected text.
+            range.insertText('x (écrire la fonction x)', Word.InsertLocation.replace);
+
+            // Synchronize the document state by executing the queued commands,
+            // and return a promise to indicate task completion.
+            return context.sync().then(function () {
+                console.log('Added time operator.');
+            });
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+                }
+            });
+    }
+
+    function insertEqualOperator() {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Queue a command to get the current selection.
+            // Create a proxy range object for the selection.
+            var range = thisDocument.getSelection();
+
+            // Queue a command to replace the selected text.
+            range.insertText('= (écrire la fonction =)', Word.InsertLocation.replace);
+
+            // Synchronize the document state by executing the queued commands,
+            // and return a promise to indicate task completion.
+            return context.sync().then(function () {
+                console.log('Added equal operator.');
+            });
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+                }
+            });
+    }
+
+    function insertNotEqualOperator() {
+        Word.run(function (context) {
+
+            // Create a proxy object for the document.
+            var thisDocument = context.document;
+
+            // Queue a command to get the current selection.
+            // Create a proxy range object for the selection.
+            var range = thisDocument.getSelection();
+
+            // Queue a command to replace the selected text.
+            range.insertText('!= (écrire la fonction !=)', Word.InsertLocation.replace);
+
+            // Synchronize the document state by executing the queued commands,
+            // and return a promise to indicate task completion.
+            return context.sync().then(function () {
+                console.log('Added not equal operator.');
+            });
+        })
+            .catch(function (error) {
+                console.log('Error: ' + JSON.stringify(error));
+                if (error instanceof OfficeExtension.Error) {
+                    console.log('Debug info: ' + JSON.stringify(error.debugInfo));
+                }
+            });
+    }
+
+
+
+
+
+
+////////////////    Anciennes fonctions 
     function insertEmersonQuoteAtSelection() {
         Word.run(function (context) {
 

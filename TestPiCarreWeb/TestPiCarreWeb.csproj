@@ -113,10 +113,17 @@
     <Content Include="Home.html" />
     <Content Include="Home.js" />
     <Content Include="Images\AddinIcon.png" />
+    <Content Include="Images\back.png" />
     <Content Include="Images\Button16x16.png" />
     <Content Include="Images\Button32x32.png" />
     <Content Include="Images\Button80x80.png" />
     <Content Include="Images\Close.png" />
+    <Content Include="Images\different.png" />
+    <Content Include="Images\egal.png" />
+    <Content Include="Images\fois.png" />
+    <Content Include="Images\moins.png" />
+    <Content Include="Images\next.png" />
+    <Content Include="Images\plus.png" />
     <Content Include="Scripts\jquery-1.9.1.js" />
     <Content Include="Scripts\jquery-1.9.1.min.js" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />

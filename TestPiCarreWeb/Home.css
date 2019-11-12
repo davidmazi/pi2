@@ -12,7 +12,7 @@
 #content-main {
     background: #fff;
     position: fixed;
-    top: 80px;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 0;
@@ -21,4 +21,35 @@
 
 .padding {
     padding: 15px;
+}
+
+.operator-block {
+    display: inline-block;
+    text-align: center;
+    padding: 5px 0px;
+    width: 50px;
+    font-size: 11px;
+    border: 1px solid #bdbdbd;
+    margin-right: 2px;
+}
+
+.operator-block input[type="image"] {
+    width: 23px;
+    padding: 3px;
+}
+
+#content-numbers {
+    width: 130px;
+    margin: auto;
+    text-align: center;
+}
+
+#content-numbers button {
+    font-size: 25px;
+    display: inline-block;
+    padding: 8px;
+    margin-right: 2px;
+    margin-bottom: 2px;
+    border: 1px solid #bdbdbd;
+    background: white;
 }
